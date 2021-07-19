@@ -1,0 +1,33 @@
+using System;
+
+namespace dslearn
+{
+    class Program
+    {
+        public static void checkarrayforpair( int[] arr,int sum)
+        {
+             int pair=0;
+             for(int i=0;i<arr.Length;i++)
+             {
+                 for(int j=i+1;j<arr.Length;j++)
+                 {
+                    if(arr[i]+arr[j]==sum)
+                    {
+                        pair++;
+                    }
+
+                 }
+             }
+             Console.WriteLine("Count of Pairs is: "+pair);
+        }
+        /* Time Complexity - o(n^2)  Space Complexity - O(1)*/
+        
+        static void Main(string[] args)
+        {
+            int[] unsortarray={3,1,8,-4,2};
+            int sum = 4;
+            checkarrayforpair(unsortarray,sum);
+        }
+    }
+}
+ 
