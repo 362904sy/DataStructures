@@ -1,0 +1,28 @@
+ public static IList<string> SubDomainvisit(string[] subdomains)
+        {
+            Dictionary<string,int> Domains=new Dictionary<string, int>();
+            foreach(string sub in subdomains)
+            {
+                    string[] ss=sub.Split(' ');
+                    int subcount = int.Parse(ss[0]);
+                    string[] getNames = ss[1].Split('.');
+
+                    string temp="";
+                    for(int i=getNames.Length-1;i>=0;i--)
+                    {
+                        temp=string.IsNullOrEmpty(temp)?getNames[i]:string.Format("{0}{1}{2}",getNames[i],'.',temp);
+                        if(!Domains.ContainsKey(temp))
+                        {
+                            Domains.Add(temp,subcount);
+                        }
+                        else
+                        {
+                            Domains[temp]+=subcount;
+                        }
+
+                    }
+
+            }
+            return Domains.Select(Res=>string.Format("{0} {1}",Res.Value,Res.Key)).ToList();
+
+        }
