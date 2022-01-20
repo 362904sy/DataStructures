@@ -1,0 +1,24 @@
+  public static double findMedian(int[] nums1,int[] nums2)
+    {
+        double median=0.0;
+        if(nums1 !=null && nums2!=null)
+        {
+                 int[] nums3=new int[nums1.Length+nums2.Length];
+                 Array.Copy(nums1,nums3,nums1.Length);
+                 Array.Copy(nums2,0,nums3,nums1.Length,nums2.Length);
+                 Array.Sort(nums3);
+                 int n=nums3.Length;
+                 if(n%2==0)
+                 {
+                     median=(Convert.ToDouble(nums3[(n/2)-1])+Convert.ToDouble(nums3[(n/2)]))/2.0;
+
+                 }
+                 else
+                 {
+                     median=nums3[((n+1)/2)-1];
+                 }
+                 
+        }
+        Console.WriteLine("The median is :"+median);
+        return median;
+    }
